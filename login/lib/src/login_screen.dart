@@ -61,12 +61,8 @@ class LoginScreen extends StatelessWidget {
                           loginScreenComponents.loginOptions[item].icon,
                       buttonText:
                           loginScreenComponents.loginOptions[item].title,
-                      onPress: () {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(
-                              loginScreenComponents.loginOptions[item].title),
-                        ));
-                      },
+                      onPress:
+                          loginScreenComponents.loginOptions[item].onPressed,
                     );
                   }),
             ),
@@ -82,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Text(loginScreenComponents.signUpOption.text,
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 18)),
+                            style: const TextStyle(fontSize: 18)),
                         InkWell(
                             onTap: (() =>
                                 loginScreenComponents.signUpOption.onTap),
