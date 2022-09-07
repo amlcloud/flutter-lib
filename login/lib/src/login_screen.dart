@@ -12,19 +12,17 @@ bool showSsoAuth = false;
 bool showEmailAuth = false;
 bool showAnonymousAuth = false;
 
-class LoginScreenComponents {
+class LoginScreen extends ConsumerWidget {
+  const LoginScreen(
+    this.screenTitle,
+    this.loginOptions,
+    this.mainTitle, {
+    Key? key,
+  }) : super(key: key);
+
   final String screenTitle;
   final Map<String, bool> loginOptions;
   final String mainTitle;
-
-  LoginScreenComponents(this.loginOptions,
-      {required this.screenTitle, required this.mainTitle});
-}
-
-class LoginScreen extends ConsumerWidget {
-  const LoginScreen({Key? key, required this.loginScreenComponents})
-      : super(key: key);
-  final LoginScreenComponents loginScreenComponents;
 
   Future<UserCredential> signInWithGoogle() async {
     // Create a new provider
@@ -44,7 +42,7 @@ class LoginScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<String> configFlags = [];
-    loginScreenComponents.loginOptions.forEach((key, value) {
+    loginOptions.forEach((key, value) {
       if (value == true) configFlags.add(key);
     });
     setAuthOptions(configFlags);
@@ -60,10 +58,9 @@ class LoginScreen extends ConsumerWidget {
             Container(
                 margin: const EdgeInsets.only(right: 270),
                 child: Text(
-                  loginScreenComponents.screenTitle,
+                  screenTitle,
                   textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
-                  style: LoginStyle.titleStyle,
                 )),
             Visibility(
                 visible: showGoogleAuth,
@@ -71,7 +68,6 @@ class LoginScreen extends ConsumerWidget {
                   children: [
                     const SizedBox(height: 50),
                     ElevatedButton(
-                        style: LoginStyle.buttonStyle,
                         onPressed: () {
                           signInWithGoogle().whenComplete(() {
                             //ref.read(isLogedIn.notifier).value = true;
@@ -82,7 +78,6 @@ class LoginScreen extends ConsumerWidget {
                             width: 50,
                             height: 50,
                             margin: const EdgeInsets.only(right: 70),
-                            decoration: LoginStyle.containerStyle,
                             child: Container(
                                 margin: const EdgeInsets.only(right: 20),
                                 child: Image.asset("search.png",
@@ -90,8 +85,9 @@ class LoginScreen extends ConsumerWidget {
                           ),
                           Container(
                               width: 180,
-                              child: Text("Log in with Google",
-                                  style: LoginStyle.buttontextStyle)),
+                              child: const Text(
+                                "Log in with Google",
+                              )),
                         ])),
                   ],
                 )),
@@ -100,7 +96,6 @@ class LoginScreen extends ConsumerWidget {
                 child: Column(children: [
                   const SizedBox(height: 50),
                   ElevatedButton(
-                      style: LoginStyle.buttonStyle,
                       onPressed: () async {
                         // ref.read(isLoading.notifier).value = true;
                         await FirebaseAuth.instance
@@ -126,9 +121,8 @@ class LoginScreen extends ConsumerWidget {
                                     width: 30, height: 30))),
                         Container(
                             width: 180,
-                            child: Text(
+                            child: const Text(
                               'Log in with Github',
-                              style: LoginStyle.buttontextStyle,
                             ))
                       ]))
                 ])),
@@ -137,13 +131,11 @@ class LoginScreen extends ConsumerWidget {
                 child: Column(children: [
                   const SizedBox(height: 50),
                   ElevatedButton(
-                      style: LoginStyle.buttonStyle,
                       onPressed: () {},
                       child: Row(mainAxisSize: MainAxisSize.min, children: [
                         Container(
                             height: 50,
                             width: 50,
-                            decoration: LoginStyle.containerStyle,
                             margin: const EdgeInsets.only(right: 70),
                             child: Container(
                                 margin: const EdgeInsets.only(right: 20),
@@ -154,9 +146,8 @@ class LoginScreen extends ConsumerWidget {
                                 ))),
                         Container(
                             width: 180,
-                            child: Text(
+                            child: const Text(
                               'Log in with SSO',
-                              style: LoginStyle.buttontextStyle,
                             ))
                       ]))
                 ])),
@@ -165,13 +156,11 @@ class LoginScreen extends ConsumerWidget {
                 child: Column(children: [
                   const SizedBox(height: 50),
                   ElevatedButton(
-                      style: LoginStyle.buttonStyle,
                       onPressed: () {},
                       child: Row(mainAxisSize: MainAxisSize.min, children: [
                         Container(
                             height: 50,
                             width: 50,
-                            decoration: LoginStyle.containerStyle,
                             margin: const EdgeInsets.only(right: 70),
                             child: Container(
                                 margin: const EdgeInsets.only(right: 20),
@@ -182,8 +171,9 @@ class LoginScreen extends ConsumerWidget {
                                 ))),
                         Container(
                             width: 180,
-                            child: Text('Log in with Email',
-                                style: LoginStyle.buttontextStyle))
+                            child: const Text(
+                              'Log in with Email',
+                            ))
                       ]))
                 ])),
             Visibility(
@@ -191,7 +181,6 @@ class LoginScreen extends ConsumerWidget {
                 child: Column(children: [
                   const SizedBox(height: 50),
                   ElevatedButton(
-                      style: LoginStyle.buttonStyle,
                       onPressed: () async {
                         // ref.read(isLoading.notifier).value = true;
                         await FirebaseAuth.instance
@@ -205,7 +194,6 @@ class LoginScreen extends ConsumerWidget {
                         Container(
                             height: 50,
                             width: 50,
-                            decoration: LoginStyle.containerStyle,
                             margin: const EdgeInsets.only(right: 70),
                             child: Container(
                                 margin: const EdgeInsets.only(right: 20),
@@ -213,16 +201,14 @@ class LoginScreen extends ConsumerWidget {
                                     width: 30, height: 30))),
                         Container(
                             width: 180,
-                            child: Text(
+                            child: const Text(
                               'Log in Anonymous',
-                              style: LoginStyle.buttontextStyle,
                             ))
                       ]))
                 ])),
             const SizedBox(height: 50),
             Container(
                 width: 350,
-                decoration: LoginStyle.seperatedLine,
                 child: Container(
                     width: 50,
                     margin: const EdgeInsets.only(top: 20),
@@ -234,9 +220,10 @@ class LoginScreen extends ConsumerWidget {
                             style: TextStyle(fontSize: 18)),
                         InkWell(
                             onTap: () => {Navigator.push},
-                            child: Text(" Sign up.",
-                                textAlign: TextAlign.center,
-                                style: LoginStyle.linkStyle))
+                            child: const Text(
+                              " Sign up.",
+                              textAlign: TextAlign.center,
+                            ))
                       ],
                     ))),
           ],
@@ -245,7 +232,7 @@ class LoginScreen extends ConsumerWidget {
       Container(
         width: 735,
         alignment: Alignment.center,
-        child: Text(loginScreenComponents.mainTitle),
+        child: Text(mainTitle),
       )
     ]));
   }
