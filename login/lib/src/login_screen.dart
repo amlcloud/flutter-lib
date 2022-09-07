@@ -12,6 +12,13 @@ bool showSsoAuth = false;
 bool showEmailAuth = false;
 bool showAnonymousAuth = false;
 
+///  Available login options keys are
+/// "loginGitHub" for Login via Github
+/// "loginGoogle" for Login via Google
+/// "loginSSO" for Login via SSO
+/// "loginEmail" for Login via Email
+/// "loginAnonymous" for Login as Anonymouse user
+
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({
     required this.screenTitle,
