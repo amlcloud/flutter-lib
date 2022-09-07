@@ -13,10 +13,10 @@ bool showEmailAuth = false;
 bool showAnonymousAuth = false;
 
 class LoginScreen extends ConsumerWidget {
-  const LoginScreen(
-    this.screenTitle,
-    this.loginOptions,
-    this.mainTitle, {
+  const LoginScreen({
+    required this.screenTitle,
+    required this.loginOptions,
+    required this.mainTitle,
     Key? key,
   }) : super(key: key);
 
