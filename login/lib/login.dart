@@ -8,4 +8,4 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'src/login_screen.dart';
 
-part 'state/generic_state_notifier.dart';
+part 'state/auth_state_notifier.dart';
