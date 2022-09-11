@@ -259,12 +259,14 @@ class LoginScreen extends ConsumerWidget {
             ],
           ),
         ),
-        Container(
-          width: 735,
-          alignment: Alignment.centerLeft,
-          decoration: const BoxDecoration(color: Colors.blueGrey),
-          child: Text(mainTitle),
-        )
+        Align(
+            alignment: AlignmentDirectional.center,
+            child: Container(
+              width: 735,
+              alignment: AlignmentDirectional.center,
+              decoration: const BoxDecoration(color: Colors.blueGrey),
+              child: Text(mainTitle),
+            ))
       ],
     );
   }
