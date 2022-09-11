@@ -260,10 +260,9 @@ class LoginScreen extends ConsumerWidget {
           ),
         ),
         Align(
-            alignment: AlignmentDirectional.center,
+            alignment: Alignment.center,
             child: Container(
               width: 735,
-              alignment: AlignmentDirectional.center,
               decoration: const BoxDecoration(color: Colors.blueGrey),
               child: Text(mainTitle),
             ))
