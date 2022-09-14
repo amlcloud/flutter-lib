@@ -60,7 +60,6 @@ class LoginPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      color: Colors.blueGrey,
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Container(
@@ -78,7 +77,6 @@ class LoginPage extends ConsumerWidget {
                           maxWidth: 340,
                         ),
                         child: Container(
-                          color: Colors.white70,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
