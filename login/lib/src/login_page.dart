@@ -18,7 +18,7 @@ final userLoggedIn = StateNotifierProvider<GenericStateNotifier<bool>, bool>(
 final showLoading = StateNotifierProvider<GenericStateNotifier<bool>, bool>(
     (ref) => GenericStateNotifier<bool>(false));
 
-class LoginPage extends ConsumerWidget {
+class LoginScreen extends ConsumerWidget {
   ///Login Options:
   ///
   /// "**loginGitHub**" for Login via Github
@@ -31,7 +31,7 @@ class LoginPage extends ConsumerWidget {
   ///
   /// "**loginAnonymous**" for Login as Anonymous user
   ///
-  const LoginPage({
+  const LoginScreen({
     this.screenTitle,
     this.loginOptions,
     this.mainTitle,
