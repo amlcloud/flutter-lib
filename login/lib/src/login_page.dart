@@ -5,12 +5,14 @@ const loginGoogle = "loginGoogle";
 const loginSSO = "loginSSO";
 const loginEmail = "loginEmail";
 const loginAnonymous = "loginAnonymous";
+const signupOption = "signupOption";
 
 bool showGoogleAuth = false;
 bool showGitHubAuth = false;
 bool showSsoAuth = false;
 bool showEmailAuth = false;
 bool showAnonymousAuth = false;
+bool showSignupOption = false;
 
 final userLoggedIn = StateNotifierProvider<AuthStateNotifier<bool>, bool>(
     (ref) => AuthStateNotifier<bool>(false));
@@ -68,10 +70,15 @@ class LoginScreen extends ConsumerWidget {
       );
     }
     List<String> configFlags = [];
+
+    //Separating all the "true" values from loginOptions
     loginOptions.forEach((key, value) {
       if (value == true) configFlags.add(key);
     });
+
+    //Setting the flags
     setAuthOptions(configFlags);
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return SizedBox(
@@ -85,7 +92,6 @@ class LoginScreen extends ConsumerWidget {
                   child: Center(
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(
-                        maxHeight: double.infinity,
                         maxWidth: 340,
                       ),
                       child: Column(
@@ -319,25 +325,27 @@ class LoginScreen extends ConsumerWidget {
                             ),
                           ),
                           const Gap(50),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                "Don't have an account ? ",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              InkWell(
-                                //onTap: () => {print("Clicked")},
-                                child: Text(
-                                  " Sign up.",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.blue),
-                                ),
-                              )
-                            ],
-                          ),
+                          Visibility(
+                              visible: showSignupOption,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Text(
+                                    "Don't have an account ? ",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  InkWell(
+                                    //onTap: () => {print("Clicked")},
+                                    child: Text(
+                                      " Sign up.",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.blue),
+                                    ),
+                                  )
+                                ],
+                              )),
                           const Gap(50),
                         ],
                       ),
@@ -371,5 +379,6 @@ class LoginScreen extends ConsumerWidget {
     showEmailAuth = config.contains(loginEmail);
     showSsoAuth = config.contains(loginSSO);
     showAnonymousAuth = config.contains(loginAnonymous);
+    showSignupOption = config.contains(signupOption);
   }
 }
