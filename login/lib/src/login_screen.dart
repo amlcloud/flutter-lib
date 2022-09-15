@@ -15,7 +15,13 @@ bool showAnonymousAuth = false;
 bool showSignupOption = false;
 
 const borderColor = Color.fromARGB(255, 208, 208, 208);
-
+const borderDecor = BoxDecoration(
+  border: Border(
+    right: BorderSide(
+      color: borderColor,
+    ),
+  ),
+);
 final userLoggedIn = StateNotifierProvider<AuthStateNotifier<bool>, bool>(
     (ref) => AuthStateNotifier<bool>(false));
 
@@ -103,7 +109,8 @@ class LoginScreen extends ConsumerWidget {
                       child: Text(
                         screenTitle,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontSize: 18),
+                        style: const TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Visibility(
@@ -125,13 +132,7 @@ class LoginScreen extends ConsumerWidget {
                                   Container(
                                     width: 50,
                                     height: 50,
-                                    decoration: const BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: borderColor,
-                                        ),
-                                      ),
-                                    ),
+                                    decoration: borderDecor,
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 20),
@@ -180,13 +181,7 @@ class LoginScreen extends ConsumerWidget {
                                   Container(
                                     width: 50,
                                     height: 50,
-                                    decoration: const BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: borderColor,
-                                        ),
-                                      ),
-                                    ),
+                                    decoration: borderDecor,
                                     margin: const EdgeInsets.only(right: 75),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 18),
@@ -222,13 +217,7 @@ class LoginScreen extends ConsumerWidget {
                                       Container(
                                           height: 50,
                                           width: 50,
-                                          decoration: const BoxDecoration(
-                                            border: Border(
-                                              right: BorderSide(
-                                                color: borderColor,
-                                              ),
-                                            ),
-                                          ),
+                                          decoration: borderDecor,
                                           margin:
                                               const EdgeInsets.only(right: 70),
                                           child: Container(
@@ -264,13 +253,7 @@ class LoginScreen extends ConsumerWidget {
                                     Container(
                                         height: 50,
                                         width: 50,
-                                        decoration: const BoxDecoration(
-                                          border: Border(
-                                            right: BorderSide(
-                                              color: borderColor,
-                                            ),
-                                          ),
-                                        ),
+                                        decoration: borderDecor,
                                         margin:
                                             const EdgeInsets.only(right: 70),
                                         child: Container(
@@ -316,13 +299,7 @@ class LoginScreen extends ConsumerWidget {
                                   Container(
                                     height: 50,
                                     width: 50,
-                                    decoration: const BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: borderColor,
-                                        ),
-                                      ),
-                                    ),
+                                    decoration: borderDecor,
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 20),
@@ -362,7 +339,7 @@ class LoginScreen extends ConsumerWidget {
                                   " Sign up",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 16, color: Colors.blue),
+                                      fontSize: 18, color: Colors.blueGrey),
                                 ),
                               )
                             ],
@@ -381,7 +358,7 @@ class LoginScreen extends ConsumerWidget {
           flex: 1,
           child: Container(
             alignment: Alignment.center,
-            decoration: const BoxDecoration(color: Colors.grey),
+            decoration: const BoxDecoration(color: Colors.blueGrey),
             child: const Text(
               "AML",
               style: TextStyle(
