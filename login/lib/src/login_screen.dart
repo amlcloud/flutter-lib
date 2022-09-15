@@ -341,28 +341,33 @@ class LoginScreen extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    const Gap(50),
                     Visibility(
-                        visible: showSignupOption,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              "Don't have an account ? ",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            InkWell(
-                              //onTap: () => {print("Clicked")},
-                              child: Text(
-                                " Sign up.",
+                      visible: showSignupOption,
+                      child: Column(
+                        children: [
+                          const Gap(50),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text(
+                                "Don't have an account ? ",
                                 textAlign: TextAlign.center,
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.blue),
+                                style: TextStyle(fontSize: 18),
                               ),
-                            )
-                          ],
-                        )),
+                              InkWell(
+                                //onTap: () => {print("Clicked")},
+                                child: Text(
+                                  " Sign up.",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.blue),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                     const Gap(50),
                   ],
                 ),
