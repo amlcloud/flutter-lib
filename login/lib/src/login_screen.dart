@@ -104,210 +104,241 @@ class LoginScreen extends ConsumerWidget {
                           screenTitle,
                           overflow: TextOverflow.ellipsis,
                         )),
-                    const Gap(25),
                     Visibility(
                       visible: showGoogleAuth,
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            signInWithGoogle().whenComplete(() {
-                              ref.read(userLoggedIn.notifier).value = true;
-                            });
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                width: 50,
-                                height: 50,
-                                decoration: const BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: borderColor,
+                      child: Column(
+                        children: [
+                          const Gap(25),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                signInWithGoogle().whenComplete(() {
+                                  ref.read(userLoggedIn.notifier).value = true;
+                                });
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: const BoxDecoration(
+                                      border: Border(
+                                        right: BorderSide(
+                                          color: borderColor,
+                                        ),
+                                      ),
+                                    ),
+                                    margin: const EdgeInsets.only(right: 70),
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 20),
+                                      child: Image.asset("search.png",
+                                          width: 30, height: 30),
                                     ),
                                   ),
-                                ),
-                                margin: const EdgeInsets.only(right: 70),
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 20),
-                                  child: Image.asset("search.png",
-                                      width: 30, height: 30),
-                                ),
+                                  const SizedBox(
+                                      width: 180,
+                                      child: Text(
+                                        "Log in with Google",
+                                      )),
+                                ],
                               ),
-                              const SizedBox(
-                                  width: 180,
-                                  child: Text(
-                                    "Log in with Google",
-                                  )),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                    const Gap(50),
                     Visibility(
                       visible: showGitHubAuth,
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            ref.read(showLoading.notifier).value = true;
-                            await FirebaseAuth.instance
-                                .signInAnonymously()
-                                .then((a) => {
-                                      ref.read(userLoggedIn.notifier).value =
-                                          true,
-                                      ref.read(showLoading.notifier).value =
-                                          false,
-                                    });
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                width: 50,
-                                height: 50,
-                                decoration: const BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: borderColor,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          const Gap(50),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                ref.read(showLoading.notifier).value = true;
+                                await FirebaseAuth.instance
+                                    .signInAnonymously()
+                                    .then((a) => {
+                                          ref
+                                              .read(userLoggedIn.notifier)
+                                              .value = true,
+                                          ref.read(showLoading.notifier).value =
+                                              false,
+                                        });
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: const BoxDecoration(
+                                      border: Border(
+                                        right: BorderSide(
+                                          color: borderColor,
+                                        ),
+                                      ),
+                                    ),
+                                    margin: const EdgeInsets.only(right: 75),
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 18),
+                                      child: Image.asset("github-logo.png",
+                                          width: 30, height: 30),
                                     ),
                                   ),
-                                ),
-                                margin: const EdgeInsets.only(right: 75),
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 18),
-                                  child: Image.asset("github-logo.png",
-                                      width: 30, height: 30),
-                                ),
+                                  const SizedBox(
+                                    width: 180,
+                                    child: Text(
+                                      'Log in with Github',
+                                    ),
+                                  )
+                                ],
                               ),
-                              const SizedBox(
-                                width: 180,
-                                child: Text(
-                                  'Log in with Github',
-                                ),
-                              )
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                    const Gap(50),
                     Visibility(
-                      visible: showSsoAuth,
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Row(mainAxisSize: MainAxisSize.min, children: [
-                            Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: borderColor,
-                                    ),
-                                  ),
-                                ),
-                                margin: const EdgeInsets.only(right: 70),
-                                child: Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    child: const Icon(
-                                      Icons.key,
-                                      size: 30,
-                                      color: Colors.black,
-                                    ))),
-                            const SizedBox(
-                                width: 180,
-                                child: Text(
-                                  'Log in with SSO',
-                                ))
-                          ]),
-                        ),
-                      ),
-                    ),
-                    const Gap(50),
+                        visible: showSsoAuth,
+                        child: Column(
+                          children: [
+                            const Gap(50),
+                            SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Container(
+                                          height: 50,
+                                          width: 50,
+                                          decoration: const BoxDecoration(
+                                            border: Border(
+                                              right: BorderSide(
+                                                color: borderColor,
+                                              ),
+                                            ),
+                                          ),
+                                          margin:
+                                              const EdgeInsets.only(right: 70),
+                                          child: Container(
+                                              margin: const EdgeInsets.only(
+                                                  right: 20),
+                                              child: const Icon(
+                                                Icons.key,
+                                                size: 30,
+                                                color: Colors.black,
+                                              ))),
+                                      const SizedBox(
+                                          width: 180,
+                                          child: Text(
+                                            'Log in with SSO',
+                                          ))
+                                    ]),
+                              ),
+                            ),
+                          ],
+                        )),
                     Visibility(
                       visible: showEmailAuth,
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Row(mainAxisSize: MainAxisSize.min, children: [
-                            Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: borderColor,
-                                    ),
-                                  ),
-                                ),
-                                margin: const EdgeInsets.only(right: 70),
-                                child: Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    child: const Icon(
-                                      Icons.mail,
-                                      size: 30,
-                                      color: Colors.black,
-                                    ))),
-                            const SizedBox(
-                              width: 180,
-                              child: Text(
-                                'Log in with Email',
-                              ),
-                            )
-                          ]),
-                        ),
+                      child: Column(
+                        children: [
+                          const Gap(50),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: const BoxDecoration(
+                                          border: Border(
+                                            right: BorderSide(
+                                              color: borderColor,
+                                            ),
+                                          ),
+                                        ),
+                                        margin:
+                                            const EdgeInsets.only(right: 70),
+                                        child: Container(
+                                            margin: const EdgeInsets.only(
+                                                right: 20),
+                                            child: const Icon(
+                                              Icons.mail,
+                                              size: 30,
+                                              color: Colors.black,
+                                            ))),
+                                    const SizedBox(
+                                      width: 180,
+                                      child: Text(
+                                        'Log in with Email',
+                                      ),
+                                    )
+                                  ]),
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                    const Gap(50),
                     Visibility(
                       visible: showAnonymousAuth,
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            // ref.read(isLoading.notifier).value = true;
-                            await FirebaseAuth.instance
-                                .signInAnonymously()
-                                .then((a) => {
-                                      //     ref.read(isLoggedIn.notifier).value = true,
-                                      //     ref.read(isLoading.notifier).value = false,
-                                    });
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: borderColor,
+                      child: Column(
+                        children: [
+                          const Gap(50),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                // ref.read(isLoading.notifier).value = true;
+                                await FirebaseAuth.instance
+                                    .signInAnonymously()
+                                    .then((a) => {
+                                          //     ref.read(isLoggedIn.notifier).value = true,
+                                          //     ref.read(isLoading.notifier).value = false,
+                                        });
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                      border: Border(
+                                        right: BorderSide(
+                                          color: borderColor,
+                                        ),
+                                      ),
+                                    ),
+                                    margin: const EdgeInsets.only(right: 70),
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 20),
+                                      child: Image.asset("anonymous.png",
+                                          width: 30, height: 30),
                                     ),
                                   ),
-                                ),
-                                margin: const EdgeInsets.only(right: 70),
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 20),
-                                  child: Image.asset("anonymous.png",
-                                      width: 30, height: 30),
-                                ),
+                                  const SizedBox(
+                                    width: 180,
+                                    child: Text(
+                                      'Log in Anonymous',
+                                    ),
+                                  )
+                                ],
                               ),
-                              const SizedBox(
-                                width: 180,
-                                child: Text(
-                                  'Log in Anonymous',
-                                ),
-                              )
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                     const Gap(50),
