@@ -103,6 +103,7 @@ class LoginScreen extends ConsumerWidget {
                       child: Text(
                         screenTitle,
                         overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 18),
                       ),
                     ),
                     Visibility(
@@ -361,7 +362,7 @@ class LoginScreen extends ConsumerWidget {
                                   " Sign up",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 14, color: Colors.blue),
+                                      fontSize: 16, color: Colors.blue),
                                 ),
                               )
                             ],
