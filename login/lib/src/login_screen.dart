@@ -99,11 +99,12 @@ class LoginScreen extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          screenTitle,
-                          overflow: TextOverflow.ellipsis,
-                        )),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        screenTitle,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                     Visibility(
                       visible: showGoogleAuth,
                       child: Column(
@@ -357,7 +358,7 @@ class LoginScreen extends ConsumerWidget {
                               InkWell(
                                 //onTap: () => {print("Clicked")},
                                 child: Text(
-                                  " Sign up.",
+                                  " Sign up",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 14, color: Colors.blue),
