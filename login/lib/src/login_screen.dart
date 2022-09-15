@@ -35,6 +35,8 @@ class LoginScreen extends ConsumerWidget {
   ///
   /// "**loginAnonymous**" for Login as Anonymous user
   ///
+  /// "**signupOption**"" for SignUp option
+  ///
   const LoginScreen({
     required this.screenTitle,
     required this.loginOptions,
