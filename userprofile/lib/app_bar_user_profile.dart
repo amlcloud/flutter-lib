@@ -50,8 +50,11 @@ void showEditProfileDialog(BuildContext context, WidgetRef ref) {
                                     //     'edit user name',
                                     //     key: Key(userDoc.id)),
                                   ],
-                              loading: () =>
-                                  [const CircularProgressIndicator()],
+                              loading: () => [
+                                    const Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  ],
                               error: (e, s) => [ErrorWidget(e)])
                     ])),
             actions: <Widget>[
