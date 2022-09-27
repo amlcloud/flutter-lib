@@ -51,9 +51,8 @@ void showEditProfileDialog(BuildContext context, WidgetRef ref) {
                                     //     key: Key(userDoc.id)),
                                   ],
                               loading: () => [
-                                    const Center(
-                                      child: CircularProgressIndicator(),
-                                    )
+                                    /**To be asked */
+                                    //Loader()
                                   ],
                               error: (e, s) => [ErrorWidget(e)])
                     ])),
@@ -67,7 +66,6 @@ void showEditProfileDialog(BuildContext context, WidgetRef ref) {
                     Navigator.of(context).pop();
                     /**To be asked */
                     //  Auth.signOut();
-
                     FirebaseAuth.instance.signOut();
                   }),
               ElevatedButton(
