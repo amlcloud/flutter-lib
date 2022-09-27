@@ -1,8 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:quiver/core.dart';
+part of userprofile;
 
 /// Query parameter for [WhereFilter] used in [filteredColSP]
 ///

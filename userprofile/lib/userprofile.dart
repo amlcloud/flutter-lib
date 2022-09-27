@@ -8,7 +8,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:firebase_storage/firebase_storage.dart';
 
-import 'package:userprofile/providers/firestore.dart';
+import 'package:equatable/equatable.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:quiver/core.dart';
 
 import 'dart:html' as html;
 
@@ -23,3 +27,5 @@ part 'app_bar_user_profile.dart';
 part 'file_upload_notifier.dart';
 
 part 'profile_photo_editor.dart';
+
+part 'providers/firestore.dart';
