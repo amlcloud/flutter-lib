@@ -12,8 +12,14 @@ class Logo extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // var isDarkState = ref.watch(themeStateNotifierProvider);
 
-    return Image.asset('assets/amlcloudlogoremovebgcrop.png',
-        package: 'logo', fit: BoxFit.contain);
+    return Column(
+      children: [
+        Expanded(
+          child: Image.asset('assets/amlcloudlogoremovebgcrop.png',
+              package: 'logo', fit: BoxFit.contain),
+        ),
+      ],
+    );
 
     // return const Image(
     //     image:
