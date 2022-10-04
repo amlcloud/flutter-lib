@@ -14,7 +14,7 @@ class Logo extends ConsumerWidget {
 
     return Container(
       // margin: const EdgeInsets.only(right: 18),
-      child: Image.asset("amlcloudlogodark_removebg_crop.png",
+      child: Image.asset("./assets/amlcloudlogodark_removebg_crop.png",
           height: 50, width: 50),
 
       // child: Image.asset('amlcloudlogoremovebgcrop.png'),
