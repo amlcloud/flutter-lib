@@ -13,8 +13,8 @@ class Logo extends ConsumerWidget {
     // var isDarkState = ref.watch(themeStateNotifierProvider);
 
     return const Image(
-        image: AssetImage('assets/amlcloudlogodark_removebg_crop.png',
-            package: 'logo'));
+        image:
+            AssetImage('assets/amlcloudlogoremovebgcrop.png', package: 'logo'));
 
     // margin: const EdgeInsets.only(right: 18),
     // child: Image.asset("amlcloudlogodark_removebg_crop.png", height: 50, width: 50),
