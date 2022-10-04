@@ -12,12 +12,11 @@ class Logo extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // var isDarkState = ref.watch(themeStateNotifierProvider);
 
-    return Row(children: [
-      Container(
-        child: (ref.watch(isDarkTheme))
-            ? Image.asset('amlcloudlogodark_removebg_crop.png')
-            : Image.asset('amlcloudlogoremovebgcrop.png'),
-      )
-    ]);
+    return Container(
+      child: Image.asset('amlcloudlogodark_removebg_crop.png'),
+      // (ref.watch(isDarkTheme))
+      // ? Image.asset('amlcloudlogodark_removebg_crop.png')
+      // : Image.asset('amlcloudlogoremovebgcrop.png'),
+    );
   }
 }
