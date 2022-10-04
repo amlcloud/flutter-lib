@@ -14,9 +14,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^1.0.4
-  gap: ^2.0.0
-
-  
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +25,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+
   # To add assets to your package, add an assets section, like this:
   assets:
     - assets/
