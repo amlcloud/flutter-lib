@@ -137,8 +137,10 @@ class LoginScreen extends ConsumerWidget {
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 20),
-                                      child: Image.asset("search.png",
-                                          width: 30, height: 30),
+                                      child: Image.asset(
+                                          'packages/flutter-lib/search.png',
+                                          width: 30,
+                                          height: 30),
                                     ),
                                   ),
                                   const SizedBox(
