@@ -12,15 +12,17 @@ class Logo extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // var isDarkState = ref.watch(themeStateNotifierProvider);
 
-    return Container(
-      // margin: const EdgeInsets.only(right: 18),
-      child: Image.asset("amlcloudlogodark_removebg_crop.png",
-          height: 50, width: 50),
+    return const Image(
+        image: AssetImage('assets/amlcloudlogodark_removebg_crop.png',
+            package: 'logo'));
 
-      // child: Image.asset('amlcloudlogoremovebgcrop.png'),
-      // (ref.watch(isDarkTheme))
-      // ? Image.asset('amlcloudlogodark_removebg_crop.png')
-      // : Image.asset('amlcloudlogoremovebgcrop.png'),
-    );
+    // margin: const EdgeInsets.only(right: 18),
+    // child: Image.asset("amlcloudlogodark_removebg_crop.png", height: 50, width: 50),
+
+    // child: Image.asset('amlcloudlogoremovebgcrop.png'),
+    // (ref.watch(isDarkTheme))
+    // ? Image.asset('amlcloudlogodark_removebg_crop.png')
+    // : Image.asset('amlcloudlogoremovebgcrop.png'),
+    // );
   }
 }
