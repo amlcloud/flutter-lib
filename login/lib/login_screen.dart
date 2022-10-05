@@ -190,8 +190,10 @@ class LoginScreen extends ConsumerWidget {
                                     margin: const EdgeInsets.only(right: 75),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 18),
-                                      child: Image.asset("github-logo.png",
-                                          width: 30, height: 30),
+                                      child: Image.asset(
+                                          "packages/flutter-lib/assets/github-logo.png",
+                                          width: 30,
+                                          height: 30),
                                     ),
                                   ),
                                   const SizedBox(
@@ -308,8 +310,10 @@ class LoginScreen extends ConsumerWidget {
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 20),
-                                      child: Image.asset("anonymous.png",
-                                          width: 30, height: 30),
+                                      child: Image.asset(
+                                          "packages/flutter-lib/assets/anonymous.png",
+                                          width: 30,
+                                          height: 30),
                                     ),
                                   ),
                                   const SizedBox(
