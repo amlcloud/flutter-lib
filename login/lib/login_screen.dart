@@ -137,12 +137,10 @@ class LoginScreen extends ConsumerWidget {
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 20),
-                                      child: const Image(
-                                          image: AssetImage(
-                                        'packages/flutter-lib/assets/search.png',
-                                        // width: 30,
-                                        // height: 30
-                                      )),
+                                      child: Image.asset('/assets/search.png',
+                                          package: 'login',
+                                          width: 30,
+                                          height: 30),
                                     ),
                                   ),
                                   const SizedBox(
@@ -191,7 +189,8 @@ class LoginScreen extends ConsumerWidget {
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 18),
                                       child: Image.asset(
-                                          "packages/flutter-lib/assets/github-logo.png",
+                                          'assets/github-logo.png',
+                                          package: 'login',
                                           width: 30,
                                           height: 30),
                                     ),
@@ -310,8 +309,8 @@ class LoginScreen extends ConsumerWidget {
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 20),
-                                      child: Image.asset(
-                                          "packages/flutter-lib/assets/anonymous.png",
+                                      child: Image.asset('assets/anonymous.png',
+                                          package: 'login',
                                           width: 30,
                                           height: 30),
                                     ),
