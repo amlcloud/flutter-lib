@@ -45,13 +45,13 @@ void showEditProfileDialog(BuildContext context, WidgetRef ref) {
                           .when(
                               data: (userDoc) => [
                                     Text(userDoc.data()!['email']),
-                                    /**To be asked */
+                                    /**To ask */
                                     // FFLTTextEdit(userDoc, 'name', 'user name',
                                     //     'edit user name',
                                     //     key: Key(userDoc.id)),
                                   ],
                               loading: () => [
-                                    /**To be asked */
+                                    /**To ask */
                                     //Loader()
                                   ],
                               error: (e, s) => [ErrorWidget(e)])
@@ -64,8 +64,6 @@ void showEditProfileDialog(BuildContext context, WidgetRef ref) {
                     //Navigator.of(context).popUntil(ModalRoute.withName('/'));
                     // Navigator.of(context).pushNamed(LoginPage.route);
                     Navigator.of(context).pop();
-                    /**To be asked */
-                    //  Auth.signOut();
                     FirebaseAuth.instance.signOut();
                   }),
               ElevatedButton(

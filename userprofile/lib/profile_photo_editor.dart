@@ -43,9 +43,9 @@ class ProfilePhotoEditor extends ConsumerWidget {
                         UploadTask _uploadTask;
                         _uploadTask = FirebaseStorage.instance
                             .ref()
-                            /**To be asked */
-                            .child(//BUCKET_PATH_USR +
-                                '${FirebaseAuth.instance.currentUser!.uid}.jpeg')
+                            /**To ask */
+                            .child(
+                                '$BUCKET_PATH_USR${FirebaseAuth.instance.currentUser!.uid}.jpeg')
                             .putData(
                                 reader.result as Uint8List,
                                 SettableMetadata(
@@ -71,9 +71,9 @@ class ProfilePhotoEditor extends ConsumerWidget {
 
                         await FirebaseStorage.instance
                             .ref()
-                            /**To be asked */
-                            .child(//BUCKET_PATH_USR +
-                                '${FirebaseAuth.instance.currentUser!.uid}.jpeg')
+                            /**To ask */
+                            .child(
+                                '$BUCKET_PATH_USR${FirebaseAuth.instance.currentUser!.uid}.jpeg')
                             .updateMetadata(SettableMetadata(
                                 cacheControl: 'public,max-age=31536000',
                                 contentType: 'image/jpeg',
@@ -104,7 +104,7 @@ class ProfilePhotoEditor extends ConsumerWidget {
             error: (e, s) => ErrorWidget(e),
             data: (userInfo) => CircleAvatar(
               radius: 50,
-              /**To be asked */
+              /**To ask */
               backgroundImage: userInfo.exists &&
                       !(userInfo.data()?['photoUrl'] ?? '').isEmpty
                   ? Image.network(userInfo.data()!['photoUrl'],
