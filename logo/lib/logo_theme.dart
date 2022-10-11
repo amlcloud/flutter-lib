@@ -10,13 +10,14 @@ class Logo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // var isDarkState = ref.watch(themeStateNotifierProvider);
-
     return Column(
       children: [
         Expanded(
-          child: Image.asset('assets/amlcloudlogoremovebgcrop.png',
-              package: 'logo', fit: BoxFit.contain),
+          child: (ref.watch(isDarkTheme))
+              ? Image.asset('assets/amlcloudlogodark_removebg_crop.png',
+                  package: 'logo', fit: BoxFit.contain)
+              : Image.asset('assets/amlcloudlogoremovebgcrop.png',
+                  package: 'logo', fit: BoxFit.contain),
         ),
       ],
     );
