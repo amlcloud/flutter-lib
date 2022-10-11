@@ -14,9 +14,9 @@ class Logo extends ConsumerWidget {
       children: [
         Expanded(
           child: (ref.watch(isDarkTheme))
-              ? Image.asset('assets/amlcloudlogodark_removebg_crop.png',
+              ? Image.asset('assets/amlcloudlogoremovebgcrop.png',
                   package: 'logo', fit: BoxFit.contain)
-              : Image.asset('assets/amlcloudlogoremovebgcrop.png',
+              : Image.asset('assets/amlcloudlogodark_removebg_crop.png',
                   package: 'logo', fit: BoxFit.contain),
         ),
       ],
