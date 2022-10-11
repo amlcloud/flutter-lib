@@ -1,4 +1,14 @@
-part of userprofile;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:html' as html;
+import 'dart:html';
+
+import 'package:userprofile/common.dart';
+import 'package:userprofile/file_upload_notifier.dart';
+import 'package:widgets/widgets.dart';
 
 const double PHOTO_RADIUS = 50;
 //const double PROFILE_PHOTO_WIDTH = 50;
@@ -43,7 +53,6 @@ class ProfilePhotoEditor extends ConsumerWidget {
                         UploadTask _uploadTask;
                         _uploadTask = FirebaseStorage.instance
                             .ref()
-                            /**To ask */
                             .child(
                                 '$BUCKET_PATH_USR${FirebaseAuth.instance.currentUser!.uid}.jpeg')
                             .putData(
@@ -71,7 +80,6 @@ class ProfilePhotoEditor extends ConsumerWidget {
 
                         await FirebaseStorage.instance
                             .ref()
-                            /**To ask */
                             .child(
                                 '$BUCKET_PATH_USR${FirebaseAuth.instance.currentUser!.uid}.jpeg')
                             .updateMetadata(SettableMetadata(

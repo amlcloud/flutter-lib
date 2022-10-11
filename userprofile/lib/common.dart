@@ -1,1 +1,1 @@
-var BUCKET_PATH_USR = 'user';
+const BUCKET_PATH_USR = 'user';
