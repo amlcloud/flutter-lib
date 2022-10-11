@@ -308,12 +308,13 @@ class LoginScreen extends ConsumerWidget {
                                     decoration: borderDecor,
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
-                                      margin: const EdgeInsets.only(right: 20),
-                                      child: Image.asset('assets/anonymous.png',
-                                          package: 'login',
-                                          width: 30,
-                                          height: 30),
-                                    ),
+                                        margin:
+                                            const EdgeInsets.only(right: 20),
+                                        child: const Icon(
+                                          Icons.account_circle,
+                                          size: 30,
+                                          color: Colors.black,
+                                        )),
                                   ),
                                   const SizedBox(
                                     width: 180,
