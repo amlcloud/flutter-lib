@@ -1,7 +1,8 @@
-import 'dart:async';
+// import 'dart:async';
 
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+part of userprofile;
 
 class FileUploadNotifier extends StateNotifier<TaskState?> {
   FileUploadNotifier() : super(null);
