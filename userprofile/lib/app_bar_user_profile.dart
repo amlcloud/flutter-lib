@@ -1,10 +1,3 @@
-// library userprofile;
-
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:userprofile/userprofile.dart';
-// import 'package:widgets/widgets.dart';
 part of userprofile;
 
 class AppBarUserProfile extends ConsumerWidget {
@@ -52,15 +45,11 @@ void showEditProfileDialog(BuildContext context, WidgetRef ref) {
                           .when(
                               data: (userDoc) => [
                                     Text(userDoc.data()!['email']),
-                                    /**To ask */
-                                    // FFLTTextEdit(userDoc, 'name', 'user name',
-                                    //     'edit user name',
-                                    //     key: Key(userDoc.id)),
+                                    FFLTTextEdit(userDoc, 'name', 'user name',
+                                        'edit user name',
+                                        key: Key(userDoc.id)),
                                   ],
-                              loading: () => [
-                                    /**To ask */
-                                    //Loader()
-                                  ],
+                              loading: () => [const Loader()],
                               error: (e, s) => [ErrorWidget(e)])
                     ])),
             actions: <Widget>[
