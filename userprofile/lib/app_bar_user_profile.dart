@@ -39,18 +39,22 @@ void showEditProfileDialog(BuildContext context, WidgetRef ref) {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(child: ProfilePhotoEditor()),
-                      ...ref
-                          .watch(docSP(
-                              'userInfo/${FirebaseAuth.instance.currentUser?.uid}'))
-                          .when(
-                              data: (userDoc) => [
-                                    Text(userDoc.data()!['email']),
-                                    FFLTTextEdit(userDoc, 'name', 'user name',
-                                        'edit user name',
-                                        key: Key(userDoc.id)),
-                                  ],
-                              loading: () => [const Loader()],
-                              error: (e, s) => [ErrorWidget(e)])
+                      // ...ref
+                      //     .watch(docSP(
+                      //         'userInfo/${FirebaseAuth.instance.currentUser?.uid}'))
+                      //     .when(
+                      //         data: (userDoc) => [
+                      //              // Text(userDoc.data()!['email']),
+                      //               // FFLTTextEdit(userDoc, 'name', 'user name',
+                      //               //     'edit user name',
+                      //               //     key: Key(userDoc.id)),
+                      //             ],
+                      //         loading: () => [const Loader()],
+                      //         error: (e, s) => [ErrorWidget(e)])
+                      Text(
+                          FirebaseAuth.instance.currentUser!.displayName == null
+                              ? FirebaseAuth.instance.currentUser!.displayName!
+                              : FirebaseAuth.instance.currentUser!.email!)
                     ])),
             actions: <Widget>[
               ElevatedButton(

@@ -102,7 +102,6 @@ class ProfilePhotoEditor extends ConsumerWidget {
             error: (e, s) => ErrorWidget(e),
             data: (userInfo) => CircleAvatar(
               radius: 50,
-              /**To ask */
               backgroundImage: userInfo.exists &&
                       !(userInfo.data()?['photoUrl'] ?? '').isEmpty
                   ? Image.network(userInfo.data()!['photoUrl'],
