@@ -93,31 +93,33 @@ class ProfilePhotoEditor extends ConsumerWidget {
                 }))
       ]);
 
-  Widget buildPhoto(BuildContext context, WidgetRef ref) => Center(
-        child: ref
-            .watch(docSP('userInfo/${FirebaseAuth.instance.currentUser!.uid}'))
-            .when(
-              loading: () => Container(),
-              error: (e, s) => ErrorWidget(e),
-              data: (userInfo) => CircleAvatar(
-                radius: 50,
-                backgroundImage: userInfo.exists &&
-                        !(userInfo.data()?['photoUrl'] ?? '').isEmpty
-                    ? Image.network(userInfo.data()!['photoUrl'],
-                            width: 50, height: 50)
-                        .image
-                    : (FirebaseAuth.instance.currentUser?.photoURL == null
-                        ? null
-                        : Image.network(
-                                FirebaseAuth.instance.currentUser!.photoURL!)
-                            .image),
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: const [Icon(Icons.person)],
-                ),
-              ),
+  Widget buildPhoto(BuildContext context, WidgetRef ref) {
+    var currentUser = FirebaseAuth.instance.currentUser;
+
+    return Center(
+      child: ref.watch(docSP('userInfo/${currentUser?.uid}')).when(
+            loading: () => Container(),
+            error: (e, s) => ErrorWidget(e),
+            data: (userInfo) => CircleAvatar(
+              radius: 50,
+              backgroundImage: userInfo.exists &&
+                      !(userInfo.data()?['photoUrl'] ?? '').isEmpty
+                  ? Image.network(userInfo.data()!['photoUrl'],
+                          width: 50, height: 50)
+                      .image
+                  : (currentUser?.photoURL == null
+                      ? null
+                      : Image.network(currentUser!.photoURL!).image),
+              child: currentUser?.photoURL == null
+                  ? Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: const [Icon(Icons.person)],
+                    )
+                  : null,
             ),
-      );
+          ),
+    );
+  }
   // data: (userInfo) => Center(
   //       child: userInfo.exists &&
   //               !(userInfo.data()?['photoUrl'] ?? '').isEmpty
