@@ -6,7 +6,6 @@ const double PHOTO_RADIUS = 50;
 
 class ProfilePhotoEditor extends ConsumerWidget {
   ProfilePhotoEditor({super.key});
-
   // final TextEditingController _name = TextEditingController();
   // final FocusNode _nameFocus = FocusNode();
 
@@ -121,9 +120,7 @@ class ProfilePhotoEditor extends ConsumerWidget {
                                     width: 50,
                                     height: 50)
                                 .image)
-                        : FirebaseAuth
-                                    .instance.currentUser?.photoURL?.isEmpty ==
-                                true
+                        : FirebaseAuth.instance.currentUser?.photoURL == null
                             ? const Icon(Icons.person)
                             : CircleAvatar(
                                 radius: 14,
