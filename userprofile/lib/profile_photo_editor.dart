@@ -98,23 +98,37 @@ class ProfilePhotoEditor extends ConsumerWidget {
       child: ref
           .watch(docSP('userInfo/${FirebaseAuth.instance.currentUser!.uid}'))
           .when(
-            loading: () => Container(),
-            error: (e, s) => ErrorWidget(e),
-            data: (userInfo) => CircleAvatar(
-              radius: 50,
-              backgroundImage: userInfo.exists &&
-                      !(userInfo.data()?['photoUrl'] ?? '').isEmpty
-                  ? Image.network(userInfo.data()!['photoUrl'],
-                          width: 50, height: 50)
-                      .image
-                  : (FirebaseAuth.instance.currentUser?.photoURL == null
-                      ? null
-                      : Image.network(
-                              FirebaseAuth.instance.currentUser!.photoURL!)
-                          .image),
-              child: const Icon(Icons.person),
-            ),
-          ));
+              loading: () => Container(),
+              error: (e, s) => ErrorWidget(e),
+              // data: (userInfo) => CircleAvatar(
+              //   radius: 50,
+              //   backgroundImage: userInfo.exists &&
+              //           !(userInfo.data()?['photoUrl'] ?? '').isEmpty
+              //       ? Image.network(userInfo.data()!['photoUrl'],
+              //               width: 50, height: 50)
+              //           .image
+              //       : (FirebaseAuth.instance.currentUser?.photoURL?.isNotEmpty==true
+              //          ? Image.network(
+              //                   FirebaseAuth.instance.currentUser!.photoURL!)
+              //               .image):,
+              data: (userInfo) => Center(
+                    child: userInfo.exists &&
+                            !(userInfo.data()?['photoUrl'] ?? '').isEmpty
+                        ? CircleAvatar(
+                            radius: 50,
+                            backgroundImage: Image.network(
+                                    userInfo.data()!['photoUrl'],
+                                    width: 50,
+                                    height: 50)
+                                .image)
+                        : FirebaseAuth.instance.currentUser?.photoURL == null
+                            ? const Icon(Icons.person)
+                            : CircleAvatar(
+                                radius: 14,
+                                backgroundImage: Image.network(FirebaseAuth
+                                        .instance.currentUser!.photoURL!)
+                                    .image),
+                  )));
   // ref.watch(docStreamProvider('org/$uid')).when(
   //     data: (org) => org.data() == null || org.data()!['logoUrl'] == null
   //         ? Center(
