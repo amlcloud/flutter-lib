@@ -51,10 +51,12 @@ void showEditProfileDialog(BuildContext context, WidgetRef ref) {
                       //             ],
                       //         loading: () => [const Loader()],
                       //         error: (e, s) => [ErrorWidget(e)])
-                      Text(FirebaseAuth.instance.currentUser?.displayName ==
+                      Text(FirebaseAuth.instance.currentUser?.displayName !=
                               null
                           ? '${FirebaseAuth.instance.currentUser?.displayName}'
-                          : '${FirebaseAuth.instance.currentUser?.email}')
+                          : FirebaseAuth.instance.currentUser?.email != null
+                              ? '${FirebaseAuth.instance.currentUser?.displayName}'
+                              : "User Info is not updated")
                     ])),
             actions: <Widget>[
               ElevatedButton(

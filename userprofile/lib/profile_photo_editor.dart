@@ -111,6 +111,7 @@ class ProfilePhotoEditor extends ConsumerWidget {
               //          ? Image.network(
               //                   FirebaseAuth.instance.currentUser!.photoURL!)
               //               .image):,
+
               data: (userInfo) => Center(
                     child: userInfo.exists &&
                             !(userInfo.data()?['photoUrl'] ?? '').isEmpty
@@ -120,7 +121,9 @@ class ProfilePhotoEditor extends ConsumerWidget {
                                     width: 50,
                                     height: 50)
                                 .image)
-                        : FirebaseAuth.instance.currentUser?.photoURL == null
+                        : FirebaseAuth
+                                    .instance.currentUser?.photoURL?.isEmpty ==
+                                true
                             ? const Icon(Icons.person)
                             : CircleAvatar(
                                 radius: 14,
