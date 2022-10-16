@@ -369,6 +369,7 @@ class LoginScreen extends ConsumerWidget {
                     ),
                     const Gap(50),
                     RichText(
+                      textAlign: TextAlign.center,
                       text: TextSpan(
                         children: [
                           const TextSpan(
@@ -392,7 +393,6 @@ class LoginScreen extends ConsumerWidget {
                             style: TextStyle(fontSize: 18),
                           ),
                           TextSpan(
-                            //onTap: () => {print("Clicked")},
                             text: "Privacy Statement.",
                             recognizer: TapGestureRecognizer()
                               ..onTap = () async {
