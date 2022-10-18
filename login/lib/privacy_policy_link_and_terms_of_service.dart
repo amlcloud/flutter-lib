@@ -8,6 +8,8 @@ class PrivacyPolicyLinkAndTermsOfService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0,
+      color: Colors.transparent,
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
