@@ -6,8 +6,8 @@ const loginSSO = "loginSSO";
 const loginEmail = "loginEmail";
 const loginAnonymous = "loginAnonymous";
 const signupOption = "signupOption";
-const tcUrl = "tcUrl";
-const privacyStatementUrl = "privacyStatementUrl";
+const termsOfServiceLink = "termsOfServiceLink";
+const privacyPolicyLink = "privacyPolicyLink";
 
 bool showGoogleAuth = false;
 bool showGitHubAuth = false;
@@ -46,11 +46,11 @@ class LoginScreen extends ConsumerWidget {
   ///
   /// "**signupOption**"" for SignUp option
   ///
-  ///Keys for Url:
+  ///Keys for Urls:
   ///
-  ///"**tcUrl**"" for Terms & Condition
+  ///"**termsOfServiceLink**"" for Terms Of Service Url
   ///
-  ///"**privacyStatementUrl**"" for Privacy Statement
+  ///"**privacyPolicyLink**"" for Privacy Policy Url
   ///
 
   const LoginScreen({
@@ -368,45 +368,7 @@ class LoginScreen extends ConsumerWidget {
                       ),
                     ),
                     const Gap(50),
-                    RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        children: [
-                          const TextSpan(
-                            text: "By creating an account, you agree to the ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          TextSpan(
-                              text: "Terms of Service.",
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () async {
-                                  var url = tcLinks[tcUrl]!;
-                                  if (!await launchUrl(Uri.parse(url))) {
-                                    throw 'Could not launch $url';
-                                  }
-                                },
-                              style: const TextStyle(
-                                  fontSize: 18, color: Colors.blueGrey)),
-                          const TextSpan(
-                            text:
-                                "For more information about our privacy practices, see the ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          TextSpan(
-                            text: "Privacy Statement.",
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () async {
-                                var url = tcLinks[privacyStatementUrl]!;
-                                if (!await launchUrl(Uri.parse(url))) {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                            style: const TextStyle(
-                                fontSize: 18, color: Colors.blueGrey),
-                          ),
-                        ],
-                      ),
-                    ),
+                    PrivacyPolicyLinkAndTermsOfService(tcLinks: tcLinks)
                   ],
                 ),
               ),
