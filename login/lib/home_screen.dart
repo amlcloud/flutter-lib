@@ -9,12 +9,17 @@ final isLoginProvider = StateNotifierProvider((_) => AuthStateNotifier(false));
 final loginState = Provider((ref) => ref.watch(isLoginProvider));
 
 class HomePage extends ConsumerWidget {
-  const HomePage(this.loginOptions, {super.key, required this.screenTitle});
+  const HomePage(
+      {super.key,
+      required this.screenTitle,
+      required this.loginOptions,
+      required this.mainTitle});
 
   final Option selectedOption = Option.login;
 
   final String screenTitle;
   final Map<String, bool> loginOptions;
+  final String mainTitle;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -58,10 +63,10 @@ class HomePage extends ConsumerWidget {
           flex: 1,
           child: Container(
             alignment: Alignment.center,
-            decoration: const BoxDecoration(color: Colors.blueGrey),
-            child: const Text(
-              "AML",
-              style: TextStyle(
+            decoration: BoxDecoration(color: Colors.blue.withAlpha(30)),
+            child: Text(
+              mainTitle,
+              style: const TextStyle(
                 fontSize: 25,
               ),
             ),
