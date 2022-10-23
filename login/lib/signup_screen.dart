@@ -36,7 +36,6 @@ class _SignupState extends ConsumerState<SignupScreen> {
     final formKey = GlobalKey<FormState>();
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      color: Colors.amber,
       child: Center(
         child: Card(
             elevation: 10,
