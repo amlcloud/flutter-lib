@@ -302,16 +302,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       const Gap(50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "Don't have an account ? ",
+                        children: [
+                          const Text(
+                            "Don't have an account? ",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 18),
                           ),
-                          InkWell(
-                            //onTap: () => {print("Clicked")},
-                            child: Text(
-                              " Sign up",
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                            ),
+                            onPressed: () => {widget.onSignUpSelected()},
+                            child: const Text(
+                              "Sign Up",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 18, color: Colors.blueGrey),

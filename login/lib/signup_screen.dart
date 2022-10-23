@@ -6,6 +6,23 @@ class SignupScreen extends ConsumerStatefulWidget {
   final Function onLogInSelected;
   @override
   ConsumerState<SignupScreen> createState() => _SignupState();
+
+  Future<UserCredential?> createUserWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      return await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        throw ('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        throw ('The account already exists for that email.');
+      }
+    } catch (e) {
+      rethrow;
+    }
+    return null;
+  }
 }
 
 final obscurePasswordProvider =
@@ -38,7 +55,7 @@ class _SignupState extends ConsumerState<SignupScreen> {
       duration: const Duration(milliseconds: 200),
       child: Center(
         child: Card(
-            elevation: 10,
+            elevation: 0,
             child: Container(
               alignment: Alignment.center,
               width: 500,
@@ -139,7 +156,10 @@ class _SignupState extends ConsumerState<SignupScreen> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (formKey.currentState!.validate()) {
+                            if (formKey.currentState?.validate() == true) {
+                              widget.createUserWithEmailAndPassword(
+                                  _emailController.text,
+                                  _passwordController.text);
                               return;
                             }
                           },

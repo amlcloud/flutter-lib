@@ -63,7 +63,7 @@ class HomePage extends ConsumerWidget {
           flex: 1,
           child: Container(
             alignment: Alignment.center,
-            decoration: BoxDecoration(color: Colors.blue.withAlpha(30)),
+            decoration: const BoxDecoration(color: Colors.blueGrey),
             child: Text(
               mainTitle,
               style: const TextStyle(
