@@ -56,6 +56,7 @@ class _SignupState extends ConsumerState<SignupScreen> {
       child: Center(
         child: Card(
             elevation: 0,
+            color: Colors.transparent,
             child: Container(
               alignment: Alignment.center,
               width: 500,

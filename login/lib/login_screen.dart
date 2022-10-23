@@ -317,7 +317,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               "Sign Up",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 18, color: Colors.blueGrey),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           )
                         ],
