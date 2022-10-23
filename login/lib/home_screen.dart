@@ -4,7 +4,7 @@ Color transparent = const Color.fromARGB(255, 255, 255, 255);
 
 enum Option { login, signUp }
 
-final isLoginProvider = StateNotifierProvider((_) => AuthStateNotifier(false));
+final isLoginProvider = StateNotifierProvider((_) => AuthStateNotifier(true));
 
 final loginState = Provider((ref) => ref.watch(isLoginProvider));
 
