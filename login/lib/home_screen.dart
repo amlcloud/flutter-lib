@@ -1,19 +1,19 @@
 part of login;
 
-Color transparent = const Color.fromARGB(255, 255, 255, 255);
-
 enum Option { login, signUp }
 
-final isLoginProvider = StateNotifierProvider((_) => AuthStateNotifier(true));
+final authOptionProvider =
+    StateNotifierProvider((_) => AuthStateNotifier(true));
 
-final loginState = Provider((ref) => ref.watch(isLoginProvider));
+final currentState = Provider((ref) => ref.watch(authOptionProvider));
 
 class HomePage extends ConsumerWidget {
-  const HomePage(
-      {super.key,
-      required this.screenTitle,
-      required this.loginOptions,
-      required this.mainTitle});
+  const HomePage({
+    super.key,
+    required this.screenTitle,
+    required this.loginOptions,
+    required this.mainTitle,
+  });
 
   final Option selectedOption = Option.login;
 
@@ -23,9 +23,9 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.watch(isLoginProvider.notifier);
+    final authOption = ref.watch(authOptionProvider.notifier);
 
-    var isLogin = ref.watch(loginState);
+    var currentUserSelection = ref.watch(currentState);
 
     Option getUserSelection(bool isLogin) {
       if (isLogin) {
@@ -42,17 +42,18 @@ class HomePage extends ConsumerWidget {
           child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 500),
               child: Container(
-                child: getUserSelection(isLogin as bool) == Option.login
+                child: getUserSelection(currentUserSelection as bool) ==
+                        Option.login
                     ? LoginScreen(
                         loginOptions: loginOptions,
                         screenTitle: screenTitle,
                         onSignUpSelected: () {
-                          notifier.value = false;
+                          authOption.value = false;
                         },
                       )
                     : SignupScreen(
                         onLogInSelected: () {
-                          notifier.value = true;
+                          authOption.value = true;
                         },
                       ),
               )
