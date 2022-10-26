@@ -1,5 +1,5 @@
 name: userprofile
-description: A new Flutter package project.
+description: Common user profile 
 version: 0.0.1
 publish_to: none
 homepage:
@@ -9,15 +9,15 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  cloud_firestore: ^3.1.18
+  firebase_auth_web: ^5.0.2
+  firebase_auth: ^4.0.2
+  firebase_storage: ^11.0.2
+  flutter_riverpod: ^2.0.2
+  cloud_firestore: ^4.0.2
   equatable: ^2.0.0
-  firebase_auth: ^3.3.20
-  firebase_auth_web: ^3.3.17
-  firebase_storage: ^10.2.18
+  quiver: ^3.1.0
   flutter:
     sdk: flutter
-  flutter_riverpod: ^1.0.4
-  quiver: ^3.1.0
   widgets:
     git: 
       url: https://github.com/amlcloud/flutter-lib.git

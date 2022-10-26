@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:firebase_storage/firebase_storage.dart';
 
-import 'package:widgets/widgets.dart';
+import 'package:common/common.dart';
 
 import 'dart:html' as html;
 
