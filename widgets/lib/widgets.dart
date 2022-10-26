@@ -8,15 +8,11 @@ import 'package:intl/intl.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:equatable/equatable.dart';
-
-import 'package:quiver/core.dart';
-
 import 'dart:async';
 
 import 'package:data_table_2/data_table_2.dart';
 
-part 'package:widgets/providers/firestore.dart';
+import 'package:common/common.dart';
 
 part 'assistant.dart';
 
