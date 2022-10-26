@@ -137,8 +137,10 @@ class LoginScreen extends ConsumerWidget {
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 20),
-                                      child: Image.asset("search.png",
-                                          width: 30, height: 30),
+                                      child: Image.asset('/assets/search.png',
+                                          package: 'login',
+                                          width: 30,
+                                          height: 30),
                                     ),
                                   ),
                                   const SizedBox(
@@ -186,8 +188,11 @@ class LoginScreen extends ConsumerWidget {
                                     margin: const EdgeInsets.only(right: 75),
                                     child: Container(
                                       margin: const EdgeInsets.only(right: 18),
-                                      child: Image.asset("github-logo.png",
-                                          width: 30, height: 30),
+                                      child: Image.asset(
+                                          'assets/github-logo.png',
+                                          package: 'login',
+                                          width: 30,
+                                          height: 30),
                                     ),
                                   ),
                                   const SizedBox(
@@ -303,10 +308,13 @@ class LoginScreen extends ConsumerWidget {
                                     decoration: borderDecor,
                                     margin: const EdgeInsets.only(right: 70),
                                     child: Container(
-                                      margin: const EdgeInsets.only(right: 20),
-                                      child: Image.asset("anonymous.png",
-                                          width: 30, height: 30),
-                                    ),
+                                        margin:
+                                            const EdgeInsets.only(right: 20),
+                                        child: const Icon(
+                                          Icons.account_circle,
+                                          size: 30,
+                                          color: Colors.black,
+                                        )),
                                   ),
                                   const SizedBox(
                                     width: 180,
