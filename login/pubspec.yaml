@@ -1,10 +1,10 @@
 name: login
-description: A new Flutter package project.
+description: AML reusable login page
 version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=2.17.1 <3.3.3'
   flutter: ">=1.17.0"
 
 dependencies:
