@@ -31,7 +31,7 @@ class PrivacyPolicyLinkAndTermsOfService extends StatelessWidget {
             const TextSpan(
               text:
                   "For more information about our privacy practices, see the ",
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 14),
             ),
             TextSpan(
               text: "Privacy Statement.",

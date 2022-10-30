@@ -1,9 +1,12 @@
 part of login;
 
 class SignupScreen extends ConsumerStatefulWidget {
-  const SignupScreen({super.key, required this.onLogInSelected});
+  const SignupScreen(
+      {super.key, required this.onLogInSelected, required this.tcLinks});
 
   final Function onLogInSelected;
+  final Map<String, String> tcLinks;
+
   @override
   ConsumerState<SignupScreen> createState() => _SignupState();
 
@@ -201,6 +204,8 @@ class _SignupState extends ConsumerState<SignupScreen> {
                           const Gap(10),
                         ],
                       ),
+                      PrivacyPolicyLinkAndTermsOfService(
+                          tcLinks: widget.tcLinks)
                     ],
                   ),
                 ),

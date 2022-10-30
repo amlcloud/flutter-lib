@@ -8,6 +8,26 @@ final authOptionProvider =
 final currentState = Provider((ref) => ref.watch(authOptionProvider));
 
 class HomePage extends ConsumerWidget {
+  ///Login Options:
+  ///
+  /// "**loginGitHub**" for Login via Github
+  ///
+  /// "**loginGoogle**" for Login via Google
+  ///
+  /// "**loginSSO**" for Login via SSO
+  ///
+  /// "**loginEmail**" for Login via Email
+  ///
+  /// "**loginAnonymous**" for Login as Anonymous user
+  ///
+  /// "**signupOption**"" for SignUp option
+  ///
+  ///Keys for Urls:
+  ///
+  ///"**termsOfServiceLink**"" for Terms Of Service Url
+  ///
+  ///"**privacyPolicyLink**"" for Privacy Policy Url
+  ///
   const HomePage({
     super.key,
     required this.screenTitle,
@@ -58,6 +78,7 @@ class HomePage extends ConsumerWidget {
                         onLogInSelected: () {
                           authOption.value = true;
                         },
+                        tcLinks: tcLinks,
                       ),
               )
               //}
