@@ -13,12 +13,14 @@ class HomePage extends ConsumerWidget {
     required this.screenTitle,
     required this.loginOptions,
     required this.mainTitle,
+    required this.tcLinks,
   });
 
   final Option selectedOption = Option.login;
 
   final String screenTitle;
   final Map<String, bool> loginOptions;
+  final Map<String, String> tcLinks;
   final String mainTitle;
 
   @override
@@ -50,6 +52,7 @@ class HomePage extends ConsumerWidget {
                         onSignUpSelected: () {
                           authOption.value = false;
                         },
+                        tcLinks: tcLinks,
                       )
                     : SignupScreen(
                         onLogInSelected: () {
