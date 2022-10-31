@@ -16,7 +16,7 @@ class PrivacyPolicyLinkAndTermsOfService extends StatelessWidget {
           children: [
             const TextSpan(
               text: "By creating an account, you agree to the ",
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 14),
             ),
             TextSpan(
                 text: "Terms of Service.",
@@ -27,7 +27,7 @@ class PrivacyPolicyLinkAndTermsOfService extends StatelessWidget {
                       throw 'Could not launch $url';
                     }
                   },
-                style: const TextStyle(fontSize: 18, color: Colors.blueGrey)),
+                style: const TextStyle(fontSize: 14, color: Colors.blueGrey)),
             const TextSpan(
               text:
                   "For more information about our privacy practices, see the ",
@@ -42,7 +42,7 @@ class PrivacyPolicyLinkAndTermsOfService extends StatelessWidget {
                     throw 'Could not launch $url';
                   }
                 },
-              style: const TextStyle(fontSize: 18, color: Colors.blueGrey),
+              style: const TextStyle(fontSize: 14, color: Colors.blueGrey),
             ),
           ],
         ),
