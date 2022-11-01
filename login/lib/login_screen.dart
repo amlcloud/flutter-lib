@@ -32,26 +32,6 @@ final showLoading = StateNotifierProvider<AuthStateNotifier<bool>, bool>(
     (ref) => AuthStateNotifier<bool>(false));
 
 class LoginScreen extends ConsumerStatefulWidget {
-  ///Login Options:
-  ///
-  /// "**loginGitHub**" for Login via Github
-  ///
-  /// "**loginGoogle**" for Login via Google
-  ///
-  /// "**loginSSO**" for Login via SSO
-  ///
-  /// "**loginEmail**" for Login via Email
-  ///
-  /// "**loginAnonymous**" for Login as Anonymous user
-  ///
-  /// "**signupOption**"" for SignUp option
-  ///
-  ///Keys for Urls:
-  ///
-  ///"**termsOfServiceLink**"" for Terms Of Service Url
-  ///
-  ///"**privacyPolicyLink**"" for Privacy Policy Url
-  ///
   const LoginScreen(
       {super.key,
       required this.screenTitle,
@@ -109,13 +89,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
+                  const Gap(5),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       widget.screenTitle,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                          fontSize: 24, fontWeight: FontWeight.bold),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Visibility(
@@ -338,7 +321,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             const Text(
                               "Don't have an account? ",
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(fontSize: 14),
                             ),
                             TextButton(
                               style: TextButton.styleFrom(
@@ -349,7 +332,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 "Sign Up",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
