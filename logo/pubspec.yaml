@@ -8,8 +8,8 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  firebase_auth_web: ^5.0.1
-  firebase_auth: ^4.0.1
+  firebase_auth_web: 5.0.1
+  firebase_auth: 4.0.1
   cloud_firestore: ^4.0.1
 
   flutter:
