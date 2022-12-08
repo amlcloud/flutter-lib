@@ -70,6 +70,51 @@ class LoginScreen extends ConsumerWidget {
     // return await FirebaseAuth.instance.signInWithRedirect(googleProvider);
   }
 
+  ElevatedButton imageButton(
+      String title, String imageName, VoidCallback callback) {
+    return ElevatedButton(
+        onPressed: callback,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 50,
+              height: 50,
+              decoration: borderDecor,
+              margin: const EdgeInsets.only(right: 70),
+              child: Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: Image.asset('/assets/$imageName.png',
+                    package: 'login', width: 30, height: 30),
+              ),
+            ),
+            SizedBox(width: 180, child: Text(title)),
+          ],
+        ));
+  }
+
+  ElevatedButton iconButton(
+      String title, IconData iconData, VoidCallback callback) {
+    return ElevatedButton(
+      onPressed: callback,
+      child: Row(mainAxisSize: MainAxisSize.min, children: [
+        Container(
+            height: 50,
+            width: 50,
+            decoration: borderDecor,
+            margin: const EdgeInsets.only(right: 70),
+            child: Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: Icon(
+                  iconData,
+                  size: 30,
+                  color: Colors.black,
+                ))),
+        SizedBox(width: 180, child: Text(title))
+      ]),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (ref.watch(showLoading)) {
@@ -92,147 +137,35 @@ class LoginScreen extends ConsumerWidget {
 
     bool isWideScreen = MediaQuery.of(context).size.width >= 800;
 
-    ElevatedButton googleButton = ElevatedButton(
-      onPressed: () {
-        signInWithGoogle().whenComplete(() {
-          ref.read(userLoggedIn.notifier).value = true;
-        });
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: borderDecor,
-            margin: const EdgeInsets.only(right: 70),
-            child: Container(
-              margin: const EdgeInsets.only(right: 20),
-              child: Image.asset('/assets/search.png',
-                  package: 'login', width: 30, height: 30),
-            ),
-          ),
-          const SizedBox(
-              width: 180,
-              child: Text(
-                "Log in with Google",
-              )),
-        ],
-      ),
-    );
+    ElevatedButton googleButton =
+        imageButton("Log in with Google 111", "search", () {
+      signInWithGoogle().whenComplete(() {
+        ref.read(userLoggedIn.notifier).value = true;
+      });
+    });
 
-    ElevatedButton githubButton = ElevatedButton(
-      onPressed: () async {
-        ref.read(showLoading.notifier).value = true;
-        await FirebaseAuth.instance.signInAnonymously().then((a) => {
-              ref.read(userLoggedIn.notifier).value = true,
-              ref.read(showLoading.notifier).value = false,
-            });
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: borderDecor,
-            margin: const EdgeInsets.only(right: 75),
-            child: Container(
-              margin: const EdgeInsets.only(right: 18),
-              child: Image.asset('assets/github-logo.png',
-                  package: 'login', width: 30, height: 30),
-            ),
-          ),
-          const SizedBox(
-            width: 180,
-            child: Text(
-              'Log in with Github',
-            ),
-          )
-        ],
-      ),
-    );
+    ElevatedButton githubButton =
+        imageButton("Log in with Github 222", "github-logo", () async {
+      ref.read(showLoading.notifier).value = true;
+      await FirebaseAuth.instance.signInAnonymously().then((a) => {
+            ref.read(userLoggedIn.notifier).value = true,
+            ref.read(showLoading.notifier).value = false,
+          });
+    });
 
-    ElevatedButton ssoButton = ElevatedButton(
-      onPressed: () {},
-      child: Row(mainAxisSize: MainAxisSize.min, children: [
-        Container(
-            height: 50,
-            width: 50,
-            decoration: borderDecor,
-            margin: const EdgeInsets.only(right: 70),
-            child: Container(
-                margin: const EdgeInsets.only(right: 20),
-                child: const Icon(
-                  Icons.key,
-                  size: 30,
-                  color: Colors.black,
-                ))),
-        const SizedBox(
-            width: 180,
-            child: Text(
-              'Log in with SSO',
-            ))
-      ]),
-    );
+    ElevatedButton ssoButton = iconButton("Log in with SSO", Icons.key, () {});
 
-    ElevatedButton emailButton = ElevatedButton(
-      onPressed: () {},
-      child: Row(mainAxisSize: MainAxisSize.min, children: [
-        Container(
-            height: 50,
-            width: 50,
-            decoration: borderDecor,
-            margin: const EdgeInsets.only(right: 70),
-            child: Container(
-                margin: const EdgeInsets.only(right: 20),
-                child: const Icon(
-                  Icons.mail,
-                  size: 30,
-                  color: Colors.black,
-                ))),
-        const SizedBox(
-          width: 180,
-          child: Text(
-            'Log in with Email',
-          ),
-        )
-      ]),
-    );
+    ElevatedButton emailButton =
+        iconButton("Log in with Email", Icons.mail, () {});
 
-    ElevatedButton anonymousButton = ElevatedButton(
-      onPressed: () async {
-        // ref.read(isLoading.notifier).value = true;
-        await FirebaseAuth.instance.signInAnonymously().then((a) => {
-              //     ref.read(isLoggedIn.notifier).value = true,
-              //     ref.read(isLoading.notifier).value = false,
-            });
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            height: 50,
-            width: 50,
-            decoration: borderDecor,
-            margin: const EdgeInsets.only(right: 70),
-            child: Container(
-                margin: const EdgeInsets.only(right: 20),
-                child: const Icon(
-                  Icons.account_circle,
-                  size: 30,
-                  color: Colors.black,
-                )),
-          ),
-          const SizedBox(
-            width: 180,
-            child: Text(
-              'Log in Anonymous',
-            ),
-          )
-        ],
-      ),
-    );
+    ElevatedButton anonymousButton =
+        iconButton("Log in Anonymous", Icons.mail, () async {
+      // ref.read(isLoading.notifier).value = true;
+      await FirebaseAuth.instance.signInAnonymously().then((a) => {
+            //     ref.read(isLoggedIn.notifier).value = true,
+            //     ref.read(isLoading.notifier).value = false,
+          });
+    });
 
     List<Widget> widgets = [
       Expanded(
