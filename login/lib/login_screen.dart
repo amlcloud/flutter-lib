@@ -92,6 +92,148 @@ class LoginScreen extends ConsumerWidget {
 
     bool isWideScreen = MediaQuery.of(context).size.width >= 800;
 
+    ElevatedButton googleButton = ElevatedButton(
+      onPressed: () {
+        signInWithGoogle().whenComplete(() {
+          ref.read(userLoggedIn.notifier).value = true;
+        });
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: borderDecor,
+            margin: const EdgeInsets.only(right: 70),
+            child: Container(
+              margin: const EdgeInsets.only(right: 20),
+              child: Image.asset('/assets/search.png',
+                  package: 'login', width: 30, height: 30),
+            ),
+          ),
+          const SizedBox(
+              width: 180,
+              child: Text(
+                "Log in with Google",
+              )),
+        ],
+      ),
+    );
+
+    ElevatedButton githubButton = ElevatedButton(
+      onPressed: () async {
+        ref.read(showLoading.notifier).value = true;
+        await FirebaseAuth.instance.signInAnonymously().then((a) => {
+              ref.read(userLoggedIn.notifier).value = true,
+              ref.read(showLoading.notifier).value = false,
+            });
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: borderDecor,
+            margin: const EdgeInsets.only(right: 75),
+            child: Container(
+              margin: const EdgeInsets.only(right: 18),
+              child: Image.asset('assets/github-logo.png',
+                  package: 'login', width: 30, height: 30),
+            ),
+          ),
+          const SizedBox(
+            width: 180,
+            child: Text(
+              'Log in with Github',
+            ),
+          )
+        ],
+      ),
+    );
+
+    ElevatedButton ssoButton = ElevatedButton(
+      onPressed: () {},
+      child: Row(mainAxisSize: MainAxisSize.min, children: [
+        Container(
+            height: 50,
+            width: 50,
+            decoration: borderDecor,
+            margin: const EdgeInsets.only(right: 70),
+            child: Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: const Icon(
+                  Icons.key,
+                  size: 30,
+                  color: Colors.black,
+                ))),
+        const SizedBox(
+            width: 180,
+            child: Text(
+              'Log in with SSO',
+            ))
+      ]),
+    );
+
+    ElevatedButton emailButton = ElevatedButton(
+      onPressed: () {},
+      child: Row(mainAxisSize: MainAxisSize.min, children: [
+        Container(
+            height: 50,
+            width: 50,
+            decoration: borderDecor,
+            margin: const EdgeInsets.only(right: 70),
+            child: Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: const Icon(
+                  Icons.mail,
+                  size: 30,
+                  color: Colors.black,
+                ))),
+        const SizedBox(
+          width: 180,
+          child: Text(
+            'Log in with Email',
+          ),
+        )
+      ]),
+    );
+
+    ElevatedButton anonymousButton = ElevatedButton(
+      onPressed: () async {
+        // ref.read(isLoading.notifier).value = true;
+        await FirebaseAuth.instance.signInAnonymously().then((a) => {
+              //     ref.read(isLoggedIn.notifier).value = true,
+              //     ref.read(isLoading.notifier).value = false,
+            });
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 50,
+            width: 50,
+            decoration: borderDecor,
+            margin: const EdgeInsets.only(right: 70),
+            child: Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: const Icon(
+                  Icons.account_circle,
+                  size: 30,
+                  color: Colors.black,
+                )),
+          ),
+          const SizedBox(
+            width: 180,
+            child: Text(
+              'Log in Anonymous',
+            ),
+          )
+        ],
+      ),
+    );
+
     List<Widget> widgets = [
       Expanded(
         flex: isWideScreen ? 1 : 0,
@@ -120,39 +262,7 @@ class LoginScreen extends ConsumerWidget {
                     child: Column(
                       children: [
                         const Gap(25),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              signInWithGoogle().whenComplete(() {
-                                ref.read(userLoggedIn.notifier).value = true;
-                              });
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: borderDecor,
-                                  margin: const EdgeInsets.only(right: 70),
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 20),
-                                    child: Image.asset('/assets/search.png',
-                                        package: 'login',
-                                        width: 30,
-                                        height: 30),
-                                  ),
-                                ),
-                                const SizedBox(
-                                    width: 180,
-                                    child: Text(
-                                      "Log in with Google",
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ),
+                        SizedBox(width: double.infinity, child: googleButton),
                       ],
                     ),
                   ),
@@ -164,46 +274,7 @@ class LoginScreen extends ConsumerWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         const Gap(50),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              ref.read(showLoading.notifier).value = true;
-                              await FirebaseAuth.instance
-                                  .signInAnonymously()
-                                  .then((a) => {
-                                        ref.read(userLoggedIn.notifier).value =
-                                            true,
-                                        ref.read(showLoading.notifier).value =
-                                            false,
-                                      });
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: borderDecor,
-                                  margin: const EdgeInsets.only(right: 75),
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 18),
-                                    child: Image.asset('assets/github-logo.png',
-                                        package: 'login',
-                                        width: 30,
-                                        height: 30),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 180,
-                                  child: Text(
-                                    'Log in with Github',
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                        SizedBox(width: double.infinity, child: githubButton),
                       ],
                     ),
                   ),
@@ -212,35 +283,7 @@ class LoginScreen extends ConsumerWidget {
                       child: Column(
                         children: [
                           const Gap(50),
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Container(
-                                        height: 50,
-                                        width: 50,
-                                        decoration: borderDecor,
-                                        margin:
-                                            const EdgeInsets.only(right: 70),
-                                        child: Container(
-                                            margin: const EdgeInsets.only(
-                                                right: 20),
-                                            child: const Icon(
-                                              Icons.key,
-                                              size: 30,
-                                              color: Colors.black,
-                                            ))),
-                                    const SizedBox(
-                                        width: 180,
-                                        child: Text(
-                                          'Log in with SSO',
-                                        ))
-                                  ]),
-                            ),
-                          ),
+                          SizedBox(width: double.infinity, child: ssoButton),
                         ],
                       )),
                   Visibility(
@@ -248,33 +291,7 @@ class LoginScreen extends ConsumerWidget {
                     child: Column(
                       children: [
                         const Gap(50),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child:
-                                Row(mainAxisSize: MainAxisSize.min, children: [
-                              Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: borderDecor,
-                                  margin: const EdgeInsets.only(right: 70),
-                                  child: Container(
-                                      margin: const EdgeInsets.only(right: 20),
-                                      child: const Icon(
-                                        Icons.mail,
-                                        size: 30,
-                                        color: Colors.black,
-                                      ))),
-                              const SizedBox(
-                                width: 180,
-                                child: Text(
-                                  'Log in with Email',
-                                ),
-                              )
-                            ]),
-                          ),
-                        )
+                        SizedBox(width: double.infinity, child: emailButton)
                       ],
                     ),
                   ),
@@ -284,43 +301,7 @@ class LoginScreen extends ConsumerWidget {
                       children: [
                         const Gap(50),
                         SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              // ref.read(isLoading.notifier).value = true;
-                              await FirebaseAuth.instance
-                                  .signInAnonymously()
-                                  .then((a) => {
-                                        //     ref.read(isLoggedIn.notifier).value = true,
-                                        //     ref.read(isLoading.notifier).value = false,
-                                      });
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: borderDecor,
-                                  margin: const EdgeInsets.only(right: 70),
-                                  child: Container(
-                                      margin: const EdgeInsets.only(right: 20),
-                                      child: const Icon(
-                                        Icons.account_circle,
-                                        size: 30,
-                                        color: Colors.black,
-                                      )),
-                                ),
-                                const SizedBox(
-                                  width: 180,
-                                  child: Text(
-                                    'Log in Anonymous',
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                            width: double.infinity, child: anonymousButton),
                       ],
                     ),
                   ),
