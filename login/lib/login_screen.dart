@@ -159,7 +159,7 @@ class LoginScreen extends ConsumerWidget {
         iconButton("Log in with Email", Icons.mail, () {});
 
     ElevatedButton anonymousButton =
-        iconButton("Log in Anonymous", Icons.mail, () async {
+        iconButton("Log in Anonymous", Icons.account_circle, () async {
       // ref.read(isLoading.notifier).value = true;
       await FirebaseAuth.instance.signInAnonymously().then((a) => {
             //     ref.read(isLoggedIn.notifier).value = true,
