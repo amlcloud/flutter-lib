@@ -137,14 +137,14 @@ class LoginScreen extends ConsumerWidget {
 
     bool isWideScreen = MediaQuery.of(context).size.width >= 800;
 
-    ElevatedButton googleButton =
+    final ElevatedButton googleButton =
         imageButton("Log in with Google", "search", () {
       signInWithGoogle().whenComplete(() {
         ref.read(userLoggedIn.notifier).value = true;
       });
     });
 
-    ElevatedButton githubButton =
+    final ElevatedButton githubButton =
         imageButton("Log in with Github", "github-logo", () async {
       ref.read(showLoading.notifier).value = true;
       await FirebaseAuth.instance.signInAnonymously().then((a) => {
@@ -153,12 +153,13 @@ class LoginScreen extends ConsumerWidget {
           });
     });
 
-    ElevatedButton ssoButton = iconButton("Log in with SSO", Icons.key, () {});
+    final ElevatedButton ssoButton =
+        iconButton("Log in with SSO", Icons.key, () {});
 
-    ElevatedButton emailButton =
+    final ElevatedButton emailButton =
         iconButton("Log in with Email", Icons.mail, () {});
 
-    ElevatedButton anonymousButton =
+    final ElevatedButton anonymousButton =
         iconButton("Log in Anonymous", Icons.account_circle, () async {
       // ref.read(isLoading.notifier).value = true;
       await FirebaseAuth.instance.signInAnonymously().then((a) => {
