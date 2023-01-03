@@ -84,7 +84,7 @@ class LoginScreen extends ConsumerWidget {
               margin: const EdgeInsets.only(right: 70),
               child: Container(
                 margin: const EdgeInsets.only(right: 20),
-                child: Image.asset('/assets/$imageName.png',
+                child: SvgPicture.asset('/assets/$imageName.svg',
                     package: 'login', width: 30, height: 30),
               ),
             ),
@@ -138,14 +138,14 @@ class LoginScreen extends ConsumerWidget {
     bool isWideScreen = MediaQuery.of(context).size.width >= 800;
 
     final ElevatedButton googleButton =
-        imageButton("Log in with Google", "search", () {
+        imageButton("Log in with Google", "google_logo", () {
       signInWithGoogle().whenComplete(() {
         ref.read(userLoggedIn.notifier).value = true;
       });
     });
 
     final ElevatedButton githubButton =
-        imageButton("Log in with Github", "github-logo", () async {
+        imageButton("Log in with Github", "github_logo", () async {
       ref.read(showLoading.notifier).value = true;
       await FirebaseAuth.instance.signInAnonymously().then((a) => {
             ref.read(userLoggedIn.notifier).value = true,
